@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Product List</h2>
+
+<a href="/inventory/add/">Add Product</a>
+
+<br><br>
+
+{% for product in products %}
+    <p>
+        {{ product.name }} | {{ product.price }} | {{ product.quantity }}
+    </p>
+{% endfor %}
+
+{% endblock %}
