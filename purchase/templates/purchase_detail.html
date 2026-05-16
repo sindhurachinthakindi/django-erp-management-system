@@ -1,0 +1,23 @@
+<h2>Purchase Invoice</h2>
+
+<p><strong>Supplier:</strong> {{ purchase.supplier.name }}</p>
+<p><strong>Date:</strong> {{ purchase.date }}</p>
+
+<hr>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+    </tr>
+
+    {% for item in items %}
+    <tr>
+        <td>{{ item.product.name }}</td>
+        <td>{{ item.quantity }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+<p><strong>Total Items:</strong> {{ items|length }}</p>

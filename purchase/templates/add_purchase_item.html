@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Add Items for Purchase {{ purchase.id }}</h2>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label>Product:</label>
+    <select name="product">
+        {% for p in products %}
+            <option value="{{ p.id }}">{{ p.name }}</option>
+        {% endfor %}
+    </select>
+
+    <br><br>
+
+    <label>Quantity:</label>
+    <input type="number" name="quantity">
+
+    <br><br>
+
+    <button type="submit">Add</button>
+</form>
+
+<h4>Total Items: {{ total }}</h4>
+<h3>Items in this Purchase</h3>
+
+<table border="1">
+    <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Action</th>
+    </tr>
+
+    {% for item in items %}
+    <tr>
+        <td>{{ item.product.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>
+            <a href="/purchase/delete-item/{{ item.id }}/"
+                onclick="return confirm('Are you sure?')">
+                Delete
+            </a>
+        </td>
+        
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

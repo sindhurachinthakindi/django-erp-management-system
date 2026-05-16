@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card">
+    <h2>Purchases</h2>
+
+    <a href="/purchase/add/" class="btn">Create New Purchase</a>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Supplier</th>
+            <th>Date</th>
+            <th>Action</th>
+        </tr>
+
+        {% for purchase in purchases %}
+        <tr>
+            <td>{{ purchase.id }}</td>
+            <td>{{ purchase.supplier }}</td>
+            <td>{{ purchase.date }}</td>
+            <td>
+                <a href="/purchase/item/{{ purchase.id }}/">View</a>
+                <a href="/purchase/delete/{{ purchase.id }}/">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>
+
+{% endblock %}
