@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>ERP Dashboard</h2>
+
+<div class="dashboard">
+
+    <div class="card">
+        <h3>Total Employees</h3>
+        <p>{{ total_employees }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Total Products</h3>
+        <p>{{ total_products }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Total Purchases</h3>
+        <p>{{ total_purchases }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Total Sales</h3>
+        <p>{{ total_sales }}</p>
+    </div>
+
+    <div class="card">
+        <h3>Total Stock</h3>
+        <p>{{ total_stock }}</p>
+    </div>
+
+</div>
+
+{% endblock %}

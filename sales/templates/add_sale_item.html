@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<form method="POST">
+    {% csrf_token %}
+
+    <label>Product:</label>
+    <select name="product">
+        {% for p in products %}
+            <option value="{{ p.id }}" {% if p.quantity == 0 %}disabled{% endif %}>
+                {{ p.name }} (Stock: {{ p.quantity }})
+            </option>
+        {% endfor %}
+    </select>
+
+    <br><br>
+
+    <label>Quantity:</label>
+    <input type="number" name="quantity">
+
+    <br><br>
+
+    <button type="submit">Sell</button>
+</form>
+
+<h2>Total: {{ total }}</h2>
+<h3>Items in this Sale</h3>
+
+<table>
+    <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Action</th>
+    </tr>
+
+    {% for item in items %}
+    <tr>
+        <td>{{ item.product.name }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>
+            <a href="/sales/delete/{{ item.id }}/">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h3>Total: {{ total }}</h3>  
+  
+
+{% endblock %}
+

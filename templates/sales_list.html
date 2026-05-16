@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a href="/sales/add/">Create New Sale</a>
+
+<h2>Sales History</h2>
+
+<table border="1" cellpadding="10">
+    <tr>
+        <th>ID</th>
+        <th>Date</th>
+        <th>Action</th>
+    </tr>
+
+    {% for sale in sales %}
+    <tr>
+        <td>{{ sale.id }}</td>
+        <td>{{ sale.date }}</td>
+        <td>
+
+            <a href="/sales/view/{{ sale.id }}/">View</a>
+            <a href="/sales/delete/{{ sale.id }}/">Delete</a>
+
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+
+
+{% endblock %}
